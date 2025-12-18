@@ -1,0 +1,16 @@
+### Get all ccsp
+GET http://localhost:8080/api/ccsps
+Content-Type: application/json
+
+### Crate a ccsp
+POST http://localhost:8080/api/ccsps
+Content-Type: application/json
+
+{
+    "name": "CSE OBE (4M)",
+    "departmentCode": "1010",
+    "offeredTerm": [4, 5],
+    "isOptional": [false, false],
+    "credits": 40,
+    "terms": 8
+}

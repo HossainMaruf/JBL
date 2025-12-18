@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.OneToMany;
 // import jakarta.persistence.Table;
 // import jakarta.persistence.GeneratedValue;
 // import jakarta.persistence.GenerationType;
@@ -22,6 +26,9 @@ public class Department {
 
    @Column
    private String abbreviation;
+
+   @OneToMany(mappedBy = "department")
+   private List<Ccsp> ccsps = new ArrayList<Ccsp>();
 
    @CreationTimestamp
    private LocalDateTime createdAt;
@@ -70,12 +77,4 @@ public class Department {
    public void setAbbreviation(String abbreviation) {
       this.abbreviation = abbreviation;
    }
-
-   // public void setCreatedAt(LocalDateTime createdAt) {
-   //    this.createdAt = createdAt;
-   // }
-
-   // public void setUpdatedAt(LocalDateTime updatedAt) {
-   //    this.updatedAt = updatedAt;
-   // }
 }

@@ -1,0 +1,3 @@
+### Get all department
+GET http://localhost:8080/api/departments
+Content-Type: application/json
