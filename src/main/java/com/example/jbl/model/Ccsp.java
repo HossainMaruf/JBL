@@ -4,8 +4,6 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -25,7 +23,6 @@ public class Ccsp  {
    @Column(nullable = false)
    private String name;
 
-   @JsonIgnore
    @ManyToOne(optional = false)
    @JoinColumn(name = "departmentCode")
    private Department department;
@@ -51,11 +48,21 @@ public class Ccsp  {
    private LocalDateTime updatedAt;
 
    // Constructors
-   public Ccsp() {}
    public Ccsp(String name, Department department, Integer terms) {
         this.name = name;
         this.department = department;
         this.terms = terms;
+   }
+   // Exposing API from ccsp
+   public Ccsp(Long code, String name, String totalDuration,
+               String termDuration, Integer terms, TermType termType)
+   {
+         this.code = code;
+         this.name = name;
+         this.totalDuration = totalDuration;
+         this.termDuration = termDuration;
+         this.terms = terms;
+         this.termType = termType;
    }
 
    // Getters

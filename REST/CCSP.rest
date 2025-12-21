@@ -2,6 +2,10 @@
 GET http://localhost:8080/api/ccsps
 Content-Type: application/json
 
+### Get a ccsp by code
+GET http://localhost:8080/api/ccsps/1
+Content-Type: application/json
+
 ### Crate a ccsp
 POST http://localhost:8080/api/ccsps
 Content-Type: application/json

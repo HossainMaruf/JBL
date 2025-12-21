@@ -1,7 +1,9 @@
 package com.example.jbl.controller;
 
 import java.util.List;
-import com.example.jbl.model.Ccsp;
+
+import com.example.jbl.dto.DepartmentDto;
+import com.example.jbl.dto.DtoMapper;
 import com.example.jbl.model.Department;
 import com.example.jbl.service.DepartmentService;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,9 @@ public class DepartmentController {
 
     // GET all departments
     @GetMapping
-    public List<Department> getAllDepartments() {
-        return service.getAllDepartments();
+    public List<DepartmentDto> getAllDepartments() {
+        List<Department> departments = service.getAllDepartments();
+        return departments.stream().map(DtoMapper::getDepartmentDto).toList();
     }
 
     // GET department by code
