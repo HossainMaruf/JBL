@@ -4,6 +4,8 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -18,11 +20,12 @@ import jakarta.persistence.GenerationType;
 public class Ccsp  {
    @Id 
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
+   private Long code;
 
    @Column(nullable = false)
    private String name;
 
+   @JsonIgnore
    @ManyToOne(optional = false)
    @JoinColumn(name = "departmentCode")
    private Department department;
@@ -56,67 +59,21 @@ public class Ccsp  {
    }
 
    // Getters
-   public Long getId() {
-    return id;
-   }
+   public Long getCode() { return code; }
+   public String getName() { return name; }
+   public Department getDepartment() { return department; }
+   public String getTotalDuration() { return totalDuration; }
+   public String getTermDuration() { return termDuration; }
+   public Integer getTerms() { return terms; }
+   public TermType getTermType() { return termType; }
+   public LocalDateTime getCreatedAt() { return createdAt; }
+   public LocalDateTime getUpdatedAt() { return updatedAt; }
 
-   public String getName() {
-    return name;
-   }
-
-   public Department getDepartment() {
-    return department;
-   }
-
-   public String getTotalDuration() {
-    return totalDuration;
-   }
-
-   public String getTermDuration() {
-    return termDuration;
-   }
-
-   public Integer getTerms() {
-    return terms;
-   }
-
-   public TermType getTermType() {
-    return termType;
-   }
-
-   public LocalDateTime getCreatedAt() {
-    return createdAt;
-   }
-
-   public LocalDateTime getUpdatedAt() {
-    return updatedAt;
-   }
   // Setters
-   public void setId(Long id) {
-    this.id = id;
-   }
-
-   public void setName(String name) {
-    this.name = name;
-   }
-
-   public void setDepartment(Department department) {
-    this.department = department;
-   }
-
-   public void setTotalDuration(String totalDuration) {
-    this.totalDuration = totalDuration;
-   }
-
-   public void setTermDuration(String termDuration) {
-    this.termDuration = termDuration;
-   }
-
-   public void setTerms(Integer terms) {
-    this.terms = terms;
-   }
-
-   public void setTermType(TermType termType) {
-    this.termType = termType;
-   }
+   public void setName(String name) { this.name = name; }
+   public void setDepartment(Department department) { this.department = department; }
+   public void setTotalDuration(String totalDuration) { this.totalDuration = totalDuration; }
+   public void setTermDuration(String termDuration) { this.termDuration = termDuration; }
+   public void setTerms(Integer terms) { this.terms = terms; }
+   public void setTermType(TermType termType) { this.termType = termType; }
 }

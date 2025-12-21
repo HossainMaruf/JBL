@@ -5,17 +5,13 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
-// import jakarta.persistence.Table;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import java.time.LocalDateTime;
 
 
-@Entity
 // @Table(name = "courses")
+@Entity
 public class Course {
     @Id
     private String code;
@@ -47,44 +43,16 @@ public class Course {
     }
 
     // Getters
-    public String getCode() {
-        return code;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Float getCredit() {
-        return credit;
-    }
-
-    public CourseType getType() {
-        return type;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
+    public String getCode() { return code; }
+    public String getTitle() { return title; }
+    public Float getCredit() { return credit; }
+    public CourseType getType() { return type; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
 
     // Setters
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setCredit(Float credit) {
-        this.credit = credit;
-    }
-
-    public void setType(CourseType type) {
-        this.type = type;
-    }
+    public void setCode(String code) { this.code = code; }
+    public void setTitle(String title) { this.title = title; }
+    public void setCredit(Float credit) { this.credit = credit; }
+    public void setType(CourseType type) { this.type = type; }
 }

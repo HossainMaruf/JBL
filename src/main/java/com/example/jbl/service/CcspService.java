@@ -19,8 +19,8 @@ public class CcspService {
    }
 
    // get ccsp by code
-   public Optional<Ccsp> getCcspById(Long id) {
-    return repository.findById(id);
+   public Optional<Ccsp> getCcspByCode(Long code) {
+    return repository.findById(code);
    }
 
    // create or update ccsp
@@ -28,8 +28,8 @@ public class CcspService {
     return repository.save(ccsp);
    }
 
-   // delete cccp by id
-   public void deleteCcsp(Long id) {
-    repository.deleteById(id);
+   // delete cccp by code
+   public void deleteCcsp(Long code) {
+    repository.deleteById(code);
    }
 }

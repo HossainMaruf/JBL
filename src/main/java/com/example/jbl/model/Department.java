@@ -4,19 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.OneToMany;
-// import jakarta.persistence.Table;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 
-@Entity
 // @Table(name = "departments")
+@Entity
 public class Department {
    @Id
    private String code;
@@ -28,7 +23,7 @@ public class Department {
    private String abbreviation;
 
    @OneToMany(mappedBy = "department")
-   private List<Ccsp> ccsps = new ArrayList<Ccsp>();
+   private List<Ccsp> ccsps;
 
    @CreationTimestamp
    private LocalDateTime createdAt;
@@ -45,36 +40,15 @@ public class Department {
    }
 
    // Getters
-   public String getCode() {
-      return code;
-   }
-
-   public String getName() {
-      return name;
-   }
-
-   public String getAbbreviation() {
-      return abbreviation;
-   }
-
-   public LocalDateTime getCreatedAt() {
-      return createdAt;
-   }
-
-   public LocalDateTime getUpdatedAt() {
-      return updatedAt;
-   }
+   public String getCode() { return code; }
+   public String getName() { return name; }
+   public String getAbbreviation() { return abbreviation; }
+   public List<Ccsp> getCcsps() { return ccsps; }
+   public LocalDateTime getCreatedAt() { return createdAt; }
+   public LocalDateTime getUpdatedAt() { return updatedAt; }
 
    // Setters
-   public void setCode(String code) {
-      this.code = code;
-   }
-
-   public void setName(String name) {
-      this.name = name;
-   }
-
-   public void setAbbreviation(String abbreviation) {
-      this.abbreviation = abbreviation;
-   }
+   public void setCode(String code) { this.code = code; }
+   public void setName(String name) { this.name = name; }
+   public void setAbbreviation(String abbreviation) { this.abbreviation = abbreviation; }
 }

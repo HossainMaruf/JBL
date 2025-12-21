@@ -22,14 +22,14 @@ public class CcspController {
 
   // GET all ccsps
   @GetMapping
-  public List<Ccsp> getCcspById() {
+  public List<Ccsp> getCcsps() {
     return service.getAllCcsps();
   }
 
-  // GET ccsp by id
-  @GetMapping("/{id}")
-  public ResponseEntity<Ccsp> getCcspById(@PathVariable Long id) {
-    return service.getCcspById(id)
+  // GET ccsp by code
+  @GetMapping("/{code}")
+  public ResponseEntity<Ccsp> getCcspByCode(@PathVariable Long code) {
+    return service.getCcspByCode(code)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
   }
@@ -41,25 +41,25 @@ public class CcspController {
   }
 
   // PUT update ccsp
-  public ResponseEntity<Ccsp> updateCcsp(@PathVariable Long id, @RequestBody Ccsp updatedCcsp) {
-    return service.getCcspById(id).map(ccsp -> {
-        ccsp.setId(updatedCcsp.getId());
-        ccsp.setName(updatedCcsp.getName());
-        ccsp.setDepartment(updatedCcsp.getDepartment());
-        ccsp.setTotalDuration(updatedCcsp.getTotalDuration());
-        ccsp.setTermDuration(updatedCcsp.getTermDuration());
-        ccsp.setTermType(updatedCcsp.getTermType());
-        service.saveCcsp(ccsp);
-        return ResponseEntity.ok(ccsp);
-    }).orElse(ResponseEntity.notFound().build());
-  }
+  // public ResponseEntity<Ccsp> updateCcsp(@PathVariable Long code, @RequestBody Ccsp updatedCcsp) {
+  //   return service.getCcspByCode(code).map(ccsp -> {
+  //       ccsp.setId(updatedCcsp.getId());
+  //       ccsp.setName(updatedCcsp.getName());
+  //       ccsp.setDepartment(updatedCcsp.getDepartment());
+  //       ccsp.setTotalDuration(updatedCcsp.getTotalDuration());
+  //       ccsp.setTermDuration(updatedCcsp.getTermDuration());
+  //       ccsp.setTermType(updatedCcsp.getTermType());
+  //       service.saveCcsp(ccsp);
+  //       return ResponseEntity.ok(ccsp);
+  //   }).orElse(ResponseEntity.notFound().build());
+  // }
 
-  // DELETE ccsp
-  @DeleteMapping("/{id}")
-  public ResponseEntity<String> deleteCcsp(@PathVariable Long id) {
-    return service.getCcspById(id).map(ccsp -> {
-        service.deleteCcsp(id);
-        return ResponseEntity.ok("Deleted ccsp with id "+id);
+  // DELETE ccsp by code
+  @DeleteMapping("/{code}")
+  public ResponseEntity<String> deleteCcsp(@PathVariable Long code) {
+    return service.getCcspByCode(code).map(ccsp -> {
+        service.deleteCcsp(code);
+        return ResponseEntity.ok("Deleted ccsp with code "+code);
     }).orElse(ResponseEntity.notFound().build());
   }
 }

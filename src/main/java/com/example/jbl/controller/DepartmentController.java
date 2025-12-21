@@ -1,6 +1,7 @@
 package com.example.jbl.controller;
 
 import java.util.List;
+import com.example.jbl.model.Ccsp;
 import com.example.jbl.model.Department;
 import com.example.jbl.service.DepartmentService;
 import org.springframework.http.ResponseEntity;
@@ -60,4 +61,12 @@ public class DepartmentController {
         })
         .orElse(ResponseEntity.notFound().build());
     }
+
+    // GET all ccsps of a particular department
+    // @GetMapping("/{code}/ccsps")
+    // public ResponseEntity<List<Ccsp>> getCcspsOfDepartment(@PathVariable String code) {
+    //     return service.getDepartmentByCode(code)
+    //         .map(department -> ResponseEntity.ok(department.getCcsps()))
+    //         .orElseGet(() -> ResponseEntity.notFound().build());
+    // }
 }
