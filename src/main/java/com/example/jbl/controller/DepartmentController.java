@@ -27,10 +27,10 @@ public class DepartmentController {
 
     // GET department by code
     @GetMapping("/{code}")
-    public ResponseEntity<Department> getAccountById(@PathVariable String code) {
+    public ResponseEntity<DepartmentDto> getDepartmentByCode(@PathVariable String code) {
         return service.getDepartmentByCode(code)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .map(department -> ResponseEntity.ok(DtoMapper.toDepartmentDto(department)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // POST create new department
