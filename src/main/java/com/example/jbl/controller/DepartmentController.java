@@ -1,7 +1,6 @@
 package com.example.jbl.controller;
 
 import java.util.List;
-
 import com.example.jbl.dto.DepartmentDto;
 import com.example.jbl.dto.DtoMapper;
 import com.example.jbl.model.Department;
@@ -23,7 +22,7 @@ public class DepartmentController {
     @GetMapping
     public List<DepartmentDto> getAllDepartments() {
         List<Department> departments = service.getAllDepartments();
-        return departments.stream().map(DtoMapper::getDepartmentDto).toList();
+        return departments.stream().map(DtoMapper::toDepartmentDto).toList();
     }
 
     // GET department by code

@@ -48,6 +48,7 @@ public class Ccsp  {
    private LocalDateTime updatedAt;
 
    // Constructors
+   public Ccsp() {}
    public Ccsp(String name, Department department, Integer terms) {
         this.name = name;
         this.department = department;

@@ -27,14 +27,14 @@ public class CcspController {
   @GetMapping
   public List<CcspDto> getCcsps() {
     List<Ccsp> ccsps = service.getAllCcsps();
-    return ccsps.stream().map(DtoMapper::getCcspDto).toList();
+    return ccsps.stream().map(DtoMapper::toCcspDto).toList();
   }
 
   // GET ccsp by code
   @GetMapping("/{code}")
   public ResponseEntity<CcspDto> getCcspByCode(@PathVariable Long code) {
     return service.getCcspByCode(code)
-                .map(ccsp -> ResponseEntity.ok(DtoMapper.getCcspDto(ccsp)))
+                .map(ccsp -> ResponseEntity.ok(DtoMapper.toCcspDto(ccsp)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
