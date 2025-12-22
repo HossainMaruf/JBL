@@ -1,8 +1,6 @@
 package com.example.jbl.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 import com.example.jbl.model.CcspCourse;
 import com.example.jbl.repository.CcspCourseRepository;
@@ -21,7 +19,12 @@ public class CcspCourseService {
     }
 
     // get a specific ccsp with all it's courses
-    public Optional<CcspCourse> getCcspWithCourses(Long code) {
-        return repository.
+    public List<CcspCourse> getCcspWithCourses(Long code) {
+        return repository.findByCcsp_Code(code);
+    }
+
+    // does the ccsp really exist
+    public Boolean ccspHasCourses(Long code) {
+        return repository.existsByCcsp_code(code);
     }
 }

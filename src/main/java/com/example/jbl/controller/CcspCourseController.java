@@ -1,7 +1,10 @@
 package com.example.jbl.controller;
 
 import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.jbl.model.CcspCourse;
@@ -23,7 +26,11 @@ public class CcspCourseController {
     }
 
     @GetMapping("/{code}/courses")
-    public List<CcspCourse> getCcspWithCourses() {
-        return service.
+    public ResponseEntity<List<CcspCourse>> getCcspWithCourses(@PathVariable Long code) {
+        if(service.ccspHasCourses(code)) {
+
+            return ResponseEntity.ok(service.getCcspWithCourses(code));
+        }
+        return ResponseEntity.notFound().build();
     }
 }
