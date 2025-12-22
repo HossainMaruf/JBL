@@ -11,7 +11,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 // @Table(name = "courses")
 @Entity
 public class Course {

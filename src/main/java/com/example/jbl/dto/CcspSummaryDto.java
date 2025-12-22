@@ -19,27 +19,10 @@ public class CcspSummaryDto {
     }
 
     // Getters
-    public Long getCode() {
-        return code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getTotalDuration() {
-        return totalDuration;
-    }
-
-    public String getTermDuration() {
-        return termDuration;
-    }
-
-    public Integer getTerms() {
-        return terms;
-    }
-
-    public String getTermType() {
-        return termType;
-    }
+    public Long getCode() { return code; }
+    public String getName() { return name; }
+    public String getTotalDuration() { return totalDuration; }
+    public String getTermDuration() { return termDuration; }
+    public Integer getTerms() { return terms; }
+    public String getTermType() { return termType; }
 }

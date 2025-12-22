@@ -3,5 +3,5 @@ GET http://localhost:8080/api/departments
 Content-Type: application/json
 
 ### Get a department by code
-GET http://localhost:8080/api/departments/DEPT11
+GET http://localhost:8080/api/departments/DEPT13
 Content-Type: application/json
