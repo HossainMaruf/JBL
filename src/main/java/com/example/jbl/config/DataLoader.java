@@ -7,12 +7,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-
 import com.github.javafaker.Faker;
 import com.example.jbl.model.Ccsp;
+import com.example.jbl.model.CcspCourse;
 import com.example.jbl.model.Course;
 import com.example.jbl.model.CourseType;
 import com.example.jbl.model.Department;
+import com.example.jbl.repository.CcspCourseRepository;
 import com.example.jbl.repository.CcspRepository;
 import com.example.jbl.repository.CourseRepository;
 import com.example.jbl.repository.DepartmentRepository;
@@ -20,6 +21,10 @@ import com.example.jbl.repository.DepartmentRepository;
 @Configuration
 public class DataLoader {
    private List<Department> departments = new ArrayList<Department>();
+   private List<Course> courses = new ArrayList<Course>();
+   private List<Ccsp> ccsps = new ArrayList<Ccsp>();
+   private List<CcspCourse> ccspCourses = new ArrayList<CcspCourse>();
+
    @Bean
    @Order(1)
    CommandLineRunner loadFakeCourses(CourseRepository courseRepository) {
@@ -32,8 +37,8 @@ public class DataLoader {
                 String title = faker.educator().course();
                 float credit = random.nextInt(4) + 1;
                 CourseType type = random.nextBoolean() ? CourseType.THEORY : CourseType.LAB;
-
                 Course course = new Course(code, title, credit, type);
+                this.courses.add(course);
                 courseRepository.save(course);
             }
         };
@@ -50,7 +55,7 @@ public class DataLoader {
                 String name = faker.university().name();
                 String abbreviation = faker.lorem().word();
                 Department department = new Department(code, name, abbreviation);
-                departments.add(department);
+                this.departments.add(department);
                 departmentRepository.save(department);
             }
         };
@@ -66,7 +71,22 @@ public class DataLoader {
                 Department department = departments.get(random.nextInt(departments.size())); 
                 int terms = 8;
                 Ccsp ccsp = new Ccsp(name, department, terms);
+                this.ccsps.add(ccsp);
                 ccspRepository.save(ccsp);
+            }
+        };
+    }
+
+    @Bean
+    @Order(4)
+    CommandLineRunner loadFakeCcspCourse(CcspCourseRepository ccspCourseRepository) {
+        return args -> {
+            Random random = new Random();
+            for(int i=1; i<=10; i++) {
+                Ccsp randomCcsp = ccsps.get(random.nextInt(ccsps.size()));
+                Course randomCourse = courses.get(random.nextInt(courses.size()));
+                CcspCourse ccspCourse = new CcspCourse(randomCcsp, randomCourse);
+                ccspCourseRepository.save(ccspCourse);
             }
         };
     }

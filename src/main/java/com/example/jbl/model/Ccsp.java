@@ -2,11 +2,14 @@ package com.example.jbl.model;
 
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
+import java.util.List;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -22,6 +25,9 @@ public class Ccsp  {
 
    @Column(nullable = false)
    private String name;
+
+   @OneToMany(mappedBy = "ccsp")
+   private List<CcspCourse> ccspCourses;
 
    @ManyToOne(optional = false)
    @JoinColumn(name = "departmentCode")
@@ -53,17 +59,6 @@ public class Ccsp  {
         this.name = name;
         this.department = department;
         this.terms = terms;
-   }
-   // Exposing API from ccsp
-   public Ccsp(Long code, String name, String totalDuration,
-               String termDuration, Integer terms, TermType termType)
-   {
-         this.code = code;
-         this.name = name;
-         this.totalDuration = totalDuration;
-         this.termDuration = termDuration;
-         this.terms = terms;
-         this.termType = termType;
    }
 
    // Getters

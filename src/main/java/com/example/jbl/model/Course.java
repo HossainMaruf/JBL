@@ -4,10 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Column;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 // @Table(name = "courses")
@@ -25,6 +27,9 @@ public class Course {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CourseType type;
+
+    @OneToMany(mappedBy = "course")
+    private List<CcspCourse> ccspCourses;
 
     @Column(updatable = false)
     @CreationTimestamp
