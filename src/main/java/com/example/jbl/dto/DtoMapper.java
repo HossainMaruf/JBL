@@ -11,6 +11,7 @@ public class DtoMapper {
                 ccsp.getDepartment().getCode(),
                 ccsp.getDepartment().getName(),
                 ccsp.getDepartment().getAbbreviation(),
+                ccsp.getCcspCourses(),
                 ccsp.getTotalDuration(),
                 ccsp.getTermDuration(),
                 ccsp.getTerms(),

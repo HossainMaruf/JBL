@@ -64,6 +64,7 @@ public class Ccsp  {
    public Long getCode() { return code; }
    public String getName() { return name; }
    public Department getDepartment() { return department; }
+   public List<CcspCourse> getCcspCourses() { return ccspCourses; }
    public String getTotalDuration() { return totalDuration; }
    public String getTermDuration() { return termDuration; }
    public Integer getTerms() { return terms; }

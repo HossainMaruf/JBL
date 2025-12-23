@@ -28,7 +28,6 @@ public class CcspCourseController {
     @GetMapping("/{code}/courses")
     public ResponseEntity<List<CcspCourse>> getCcspWithCourses(@PathVariable Long code) {
         if(service.ccspHasCourses(code)) {
-
             return ResponseEntity.ok(service.getCcspWithCourses(code));
         }
         return ResponseEntity.notFound().build();

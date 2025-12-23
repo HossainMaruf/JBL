@@ -26,10 +26,10 @@ public class CcspCourse {
    @JoinColumn(name = "courseCode")
    private Course course;
 
-   @Column()
-   private Integer offeredTerm;
+   @Column(nullable = false)
+   private Integer offeredTerm = 8;
 
-   @Column()
+   @Column(nullable = false)
    private Boolean isOptional = false;
 
    @CreationTimestamp
