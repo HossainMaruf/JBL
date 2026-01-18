@@ -80,3 +80,4 @@ public class Ccsp  {
    public void setTerms(Integer terms) { this.terms = terms; }
    public void setTermType(TermType termType) { this.termType = termType; }
 }
+
