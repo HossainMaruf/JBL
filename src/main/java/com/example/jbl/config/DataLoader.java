@@ -23,7 +23,6 @@ public class DataLoader {
    private List<Department> departments = new ArrayList<Department>();
    private List<Course> courses = new ArrayList<Course>();
    private List<Ccsp> ccsps = new ArrayList<Ccsp>();
-   private List<CcspCourse> ccspCourses = new ArrayList<CcspCourse>();
 
    @Bean
    @Order(1)

@@ -4,7 +4,6 @@ import java.util.List;
 import com.example.jbl.dto.CcspDto;
 import com.example.jbl.dto.DtoMapper;
 import com.example.jbl.model.Ccsp;
-import com.example.jbl.model.CcspCourse;
 import com.example.jbl.service.CcspService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
