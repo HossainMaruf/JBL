@@ -19,6 +19,7 @@ import jakarta.persistence.GenerationType;
 // @Table(name = "ccsps")
 public class Ccsp  {
    @Id 
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long code;
 
